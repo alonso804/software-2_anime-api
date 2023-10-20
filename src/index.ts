@@ -1,5 +1,6 @@
 import './env';
 import './mongo';
+import './redis';
 import 'express-async-errors';
 
 import express from 'express';

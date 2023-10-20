@@ -1,19 +1,37 @@
 import { getModelForClass, prop, type ReturnModelType } from '@typegoose/typegoose';
 import type { Document } from 'mongoose';
 
-export class Test {
+export class Anime {
   @prop()
-  name: string;
+  id: number;
 
-  static async findByName(
-    this: ReturnModelType<typeof Test>,
-    name: string,
-  ): Promise<TestDocument | null> {
-    return this.findOne({ name });
+  @prop()
+  title: string;
+
+  @prop()
+  type: string;
+
+  @prop()
+  source: string;
+
+  @prop()
+  episodes: number;
+
+  @prop()
+  status: string;
+
+  @prop()
+  airing: boolean;
+
+  static async findOneById(
+    this: ReturnModelType<typeof Anime>,
+    id: number,
+  ): Promise<AnimeDocument | null> {
+    return this.findOne({ id });
   }
 }
 
-export type TestDocument = Test & Document;
+export type AnimeDocument = Anime & Document;
 
-const TestModel = getModelForClass(Test);
-export default TestModel;
+const AnimeModel = getModelForClass(Anime);
+export default AnimeModel;

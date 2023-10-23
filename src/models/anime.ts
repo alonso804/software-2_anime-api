@@ -33,5 +33,9 @@ export class Anime {
 
 export type AnimeDocument = Anime & Document;
 
-const AnimeModel = getModelForClass(Anime);
+const AnimeModel = getModelForClass(Anime, {
+  schemaOptions: {
+    collection: 'anime',
+  }
+});
 export default AnimeModel;
